@@ -3,12 +3,16 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import AppMentors from './AppMentors';
+import AppMentorsImmer from './AppMentorsImmer';
+import AppForm from './AppForm';
+import AppWrap from './AppWrap';
+import AppCard from './AppCard';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AppMentors />
+    <AppCard />
   </React.StrictMode>
 );
 
