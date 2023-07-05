@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 export default function useProducts({ salesOnly }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
@@ -5,7 +6,7 @@ export default function useProducts({ salesOnly }) {
   useEffect(() => {
     setLoading(true);
     setError(undefined);
-    fetch(`data/${checked ? 'sale_' : ''}products.json`)
+    fetch(`data/${salesOnly ? 'sale_' : ''}products.json`)
       .then((res) => res.json())
       .then((data) => {
         console.log('🔥뜨끈한 데이터를 네트워크에서 받아옴');
@@ -17,4 +18,6 @@ export default function useProducts({ salesOnly }) {
       console.log('🧹 깨끗하게 청소하는 일들을 합니다.');
     };
   }, [salesOnly]);
+  return [loading, error, products];
 }
+// 커스텀 훅은 값의 재사용이 아니라 로직의 재사용임.

@@ -4,7 +4,7 @@ import personReducer from './reducer/person-reducer';
 export default function AppMentorsButton() {
   const [person, dispatch] = useReducer(personReducer, initialPerson);
 
-  const handleUpdate = useCallback(() => {
+  const handleUpdate = useCallback(() => { // 한번만 만들어짐 useMemo와 비슷
     const prev = prompt(`누구의 이름을 바꾸고 싶은가요?`);
     const current = prompt(`이름을 무엇으로 바꾸고 싶은가요?`);
     dispatch({ type: 'updated', prev, current });
@@ -41,7 +41,7 @@ export default function AppMentorsButton() {
   );
 }
 
-const Button = memo(({ text, onClick }) => {
+const Button = memo(({ text, onClick }) => { //리액트가 기억했다가 props가 변경되어도 싷제 전달된 값이 변경되지 않았다면 다시 랜더링 하지 말기
   console.log('Button', text, 're-rendering 😜');
   const result = useMemo(() => calculateSomething(), []);
   return (
